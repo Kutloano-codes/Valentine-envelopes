@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>From Manando 💌</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff5f7;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .wrapper {
+      text-align: center;
+    }
+
+    .from-text {
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #b11226;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .envelope {
+      width: 280px;
+      height: 190px;
+      background: white;
+      position: relative;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      border: 3px solid #c1122f;
+      transition: transform 0.4s;
+    }
+
+    .envelope::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-left: 140px solid transparent;
+      border-right: 140px solid transparent;
+      border-top: 95px solid #c1122f;
+      transform-origin: top;
+      transition: transform 0.7s ease;
+      border-radius: 5px;
+    }
+
+    .envelope.open::before {
+      transform: rotateX(180deg);
+    }
+
+    .letter {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      height: 170px;
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 18px;
+      text-align: center;
+      font-size: 16px;
+      color: #7a0b1c;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
+      box-shadow: inset 0 0 0 2px #ffe3e8;
+    }
+
+    .envelope.open .letter {
+      opacity: 1;
+      transform: translateY(-50px);
+    }
+
+    .letter h3 {
+      margin-top: 0;
+      color: #c1122f;
+    }
+
+    .heart {
+      position: absolute;
+      color: #e63946;
+      font-size: 20px;
+      animation: float 4s linear forwards;
+    }
+
+    @keyframes float {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-220px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="from-text">From Manando, to you 💌</div>
+
+    <div class="envelope" onclick="openEnvelope()">
+      <div class="letter">
+    
+        <h3>Hey You 🤍</h3>
+        <p>Will you be my Valentine?
+        </p>
+        <p>Yes or yes ?</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openEnvelope() {
+      const envelope = document.querySelector('.envelope');
+      envelope.classList.toggle('open');
+
+      for (let i = 0; i < 18; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.bottom = '0px';
+        heart.style.fontSize = (14 + Math.random() * 22) + 'px';
+
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }
+    }
+  </script>
+
+</body>
+</html>
